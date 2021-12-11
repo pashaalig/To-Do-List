@@ -1,0 +1,21 @@
+{% extends 'todoList/base.html' %}
+
+{% block content %}
+
+<div class="container my-5">
+    <div class="col-lg-4 mx-auto shadow p-0">
+        <div class="alert alert-danger">
+            <h2>Edit ToDo</h2>
+        </div>
+        <div class="p-4">
+            <form action="/todoList/edit-todo/{{id}}" method="post">
+                {% csrf_token %}
+                {{ form.as_p }}
+                <hr>
+                <input type="submit" value="Edit" class="btn btn-success my-2">
+            </form>
+        </div>
+    </div>
+</div>
+
+{% endblock %}

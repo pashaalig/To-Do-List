@@ -1,0 +1,91 @@
+{% extends 'todoList/base.html' %}
+
+{% block content %}
+<div>
+    <div class="container pt-4">
+        <div class="row mt-4 p-0 ">
+            <div class="col-lg-4 mx-auto shadow p-0">
+                <div class="alert alert-info">
+                    <h2>Add New ToDo</h2>
+                </div>
+                <div class="p-4">
+                    <form action="/todoList/add/" method="post">
+                        {% csrf_token %}
+                        {{ form.as_p }}
+                        <hr>
+                        <input type="submit" value="ADD" class="btn btn-success my-2">
+                    </form>
+                </div>
+            </div>
+            <div class="col mx-2">
+                <div class="border m-auto">
+                    <div class="container my-3 ">
+                       
+                        {% if todos|length == 0 %}
+                        <div>
+                            <div class="alert alert-info text-center">
+                                <p class="display-4 p-0">No ToDos</p>
+                            </div>
+                        </div>
+                        {% else %}
+                        <h2 class="text-center py-2">To Dos List - All Tasks</h2>
+                        <div class="container my-3  ">
+                            <table class="table">
+                                <thead>
+                                    <tr>
+                                        <th scope="col">S.No.</th>
+                                        <th scope="col">Title</th>
+                                        <th scope="col">Status</th>
+                                        <th scope="col">Priority</th>
+                                        <th scope="col">Action</th>
+
+                                    </tr>
+                                </thead>
+                                <tbody>
+                                    {% for todo in todos %}
+                                    <tr>
+                                        <th scope="row">{{forloop.counter}}</th>
+                                        <td>{{todo.title}}</td>
+                                        <td>{{todo.status}}</td>
+                                        <td>{{todo.priority}}</td>
+                                        <td><a class="btn btn-outline-warning btn-sm " href="/todoList/edit-todo/{{todo.id}}"  title="Edit" role="button">✏️</a></td>
+                                        <td><a class="btn btn-outline-danger btn-sm " href="/todoList/delete-todo/{{todo.id}}" title="Delete" role="button">🗑️</a></td>
+                                    </tr>
+                                    {% endfor %}
+                                </tbody>
+                            </table>
+
+                            {%endif %}
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<!-- <div class="container my-3">
+    {% if message %}
+    <div class="alert alert-success alert-dismissible fade show" role="alert">
+        {{ message }}
+        <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+
+    </div>
+    {% endif %}
+    <h2 class="text-center">Welcome to ToDoList- Add a Task</h2>
+
+    <form action="" method="post">
+        {% csrf_token %}
+        <div class="mb-1">
+            <label for="title" class="form-label">Task Title</label>
+            <input type="text" class="form-control" name="title" id="title" aria-describedby="emailHelp">
+        </div>
+        <div class="mb-3">
+            <label for="task" class="form-label">Task Description</label>
+            <textarea class="form-control" name="task" id="task" cols="30" rows="10"></textarea>
+        </div>
+        <button type="submit" class="btn btn-success">Submit</button>
+    </form>
+</div> -->
+
+{% endblock %}

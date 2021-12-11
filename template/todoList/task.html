@@ -1,0 +1,32 @@
+<!-- {% extends 'todoList/base.html' %}
+
+{% block content %}
+
+<div class="container my-3 ">
+  <h2 class="text-center py-2">To Dos List - All Tasks</h2>
+  <div class="container my-3  ">
+    <table class="table">
+      <thead>
+        <tr>
+          <th scope="col">S.No.</th>
+          <th scope="col">Task Title</th>
+          <th scope="col">Task Description</th>
+          <th scope="col">Action</th>
+
+        </tr>
+      </thead>
+      <tbody>
+        {% for task in tasks %}
+        <tr>
+          <th scope="row">{{forloop.counter}}</th>
+          <td>{{task.tasktitle}}</td>
+          <td>{{task.desc}}</td>
+          <td><a class="btn btn-warning btn-sm" href="#" role="button">Edit</a></td>
+          <td><a class="btn btn-danger btn-sm" href="#" role="button">Delete</a></td>
+        </tr>
+        {% endfor %}
+      </tbody>
+    </table>
+  </div>
+</div>
+{% endblock %} -->
